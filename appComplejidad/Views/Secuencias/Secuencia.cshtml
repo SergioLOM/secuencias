@@ -1,0 +1,35 @@
+﻿@model appComplejidad.Models.Secuencia
+
+@{
+    ViewBag.Title = "Secuencias";
+}
+
+<h2>Secuencias</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <ul class="list-group">
+
+            @foreach (var item in (List<double>)System.Web.HttpContext.Current.Session["Secuencia"])
+            {
+                <li class="list-group-item">
+                    <h4>@Html.DisplayFor(modelItem => item)</h4>
+                    <a asp-action="Edit"><i class="material-icons">remove_circle_outline</i></a>
+                </li>
+            }
+        </ul>
+        <ul class="list-group">
+
+            @foreach (var item in (List<double>)System.Web.HttpContext.Current.Session["SecuenciaReverse"])
+            {
+                <li class="list-group-item">
+                    <h4>@Html.DisplayFor(modelItem => item)</h4>
+                    <a asp-action="Edit"><i class="material-icons">remove_circle_outline</i></a>
+                </li>
+            }
+        </ul>
+
+        <h1> @HttpUtility.HtmlEncode((int)System.Web.HttpContext.Current.Session["HashCode"])  </h1>
+    </div>
+</div>
